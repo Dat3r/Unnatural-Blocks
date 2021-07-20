@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "unnaturalblocks:block/speedpad",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "unnaturalblocks:block/speedpad",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "unnaturalblocks:block/speedpad"
+    },
+    "facing=south": {
+      "model": "unnaturalblocks:block/speedpad",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "unnaturalblocks:block/speedpad"
+    },
+    "facing=west": {
+      "model": "unnaturalblocks:block/speedpad",
+      "y": 270
+    }
+  }
+}
