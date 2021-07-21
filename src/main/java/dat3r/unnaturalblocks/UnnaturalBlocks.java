@@ -106,7 +106,7 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
         ElytrapadSettings.breakByTool(FabricToolTags.PICKAXES, 2);
         ElytrapadSettings.requiresTool();
         ElytrapadSettings.sounds(PadSound);
-        ElytraPad = new ElytraPad(ElytrapadSettings);
+        ElytraPad = new Block(ElytrapadSettings);
         Registry.register(Registry.BLOCK, "unnaturalblocks:elytrapad", ElytraPad);
 
         Item.Settings ElytraPadItemSettings = new Item.Settings();
@@ -114,7 +114,7 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
         Registry.register(Registry.ITEM, "unnaturalblocks:elytrapad", new BlockItem(ElytraPad, ElytraPadItemSettings));
 
         // New Block with same settings
-        UltraElytraPad = new ElytraPad(ElytrapadSettings);
+        UltraElytraPad = new Block(ElytrapadSettings);
         Registry.register(Registry.BLOCK, "unnaturalblocks:ultraelytrapad", UltraElytraPad);
         Registry.register(Registry.ITEM, "unnaturalblocks:ultraelytrapad", new BlockItem(UltraElytraPad, ElytraPadItemSettings));
 
@@ -165,11 +165,7 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
                     BlockState state = playerworld.getBlockState(playerpos);
 
                     if (state.isOf(ElytraPad)) { // if the block at the current position we are checking is elytra pad
-                        ItemStack Elytra = new ItemStack(Items.ELYTRA); // create a stack of 1 elytra
-                        Elytra.addEnchantment(Enchantments.BINDING_CURSE, 1); // give it curse of binding
-                        Elytra.addEnchantment(Enchantments.UNBREAKING, 1000);
-                        Elytra.getOrCreateNbt().putBoolean("TemporaryElytra", true); // marker to show it's our elytra
-                        Elytra.addHideFlag(ItemStack.TooltipSection.ENCHANTMENTS); // hide enchantment tooltips
+                        ItemStack Elytra = CreateElytra();
 
                         Player.equipStack(EquipmentSlot.CHEST, Elytra); // equip the elytra on the chest
                         break; // if we've already found it we break from the loop
@@ -184,11 +180,7 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
                     BlockState state = playerworld.getBlockState(playerpos);
 
                     if (state.isOf(UltraElytraPad)) {
-                        ItemStack Elytra = new ItemStack(Items.ELYTRA);
-                        Elytra.addEnchantment(Enchantments.BINDING_CURSE, 1);
-                        Elytra.addEnchantment(Enchantments.UNBREAKING, 1000);
-                        Elytra.getOrCreateNbt().putBoolean("TemporaryElytra", true);
-                        Elytra.addHideFlag(ItemStack.TooltipSection.ENCHANTMENTS);
+                        ItemStack Elytra = CreateElytra();
 
                         Player.equipStack(EquipmentSlot.CHEST, Elytra);
                         break;
@@ -199,6 +191,14 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
                 }
             }
         }
+    }
+    static ItemStack CreateElytra() {
+        ItemStack Elytra = new ItemStack(Items.ELYTRA); // create a stack of 1 elytra
+        Elytra.addEnchantment(Enchantments.BINDING_CURSE, 1); // give it curse of binding
+        Elytra.addEnchantment(Enchantments.UNBREAKING, 1000);
+        Elytra.getOrCreateNbt().putBoolean("TemporaryElytra", true); // marker to show it's our elytra
+        Elytra.addHideFlag(ItemStack.TooltipSection.ENCHANTMENTS); // hide enchantment tooltips
+        return Elytra;
     }
 }
 

@@ -4,7 +4,7 @@
   "package": "dat3r.unnaturalblocks.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "MixinLivingEntity"
+    "MixinLivingEntity", "MixinItemStack"
   ],
   "client": [
   ],
