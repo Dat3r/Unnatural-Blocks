@@ -1,0 +1,7 @@
+{
+  "parent": "unnaturalblocks:block/side_other",
+  "textures": {
+    "other": "minecraft:block/soul_sand",
+    "side": "unnaturalblocks:block/blindnesspad"
+  }
+}

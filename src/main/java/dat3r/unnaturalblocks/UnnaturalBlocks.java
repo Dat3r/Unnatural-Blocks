@@ -21,18 +21,20 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
+import org.lwjgl.system.CallbackI;
 
 import java.util.List;
 
 public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick {
-    static ItemGroup UnnaturalBlocksGroup;
-    static Block GlowBlock;
-    static Block LaunchPad;
-    static Block SpeedPad;
-    static Block SmallJumpPad;
-    static Block ElytraPad;
-    static Block UltraElytraPad;
-    static Block JumpPad;
+    public static ItemGroup UnnaturalBlocksGroup;
+    public static Block GlowBlock;
+    public static Block LaunchPad;
+    public static Block SpeedPad;
+    public static Block SmallJumpPad;
+    public static Block ElytraPad;
+    public static Block UltraElytraPad;
+    public static Block Blindnesspad;
+    public static Block JumpPad;
     static SoundEvent Nothing = new SoundEvent(new Identifier("unnaturalblocks:nothing"));
     static BlockSoundGroup PadSound = new BlockSoundGroup(1.0f, 1.0f, SoundEvents.BLOCK_STONE_BREAK, Nothing, SoundEvents.BLOCK_STONE_PLACE, SoundEvents.BLOCK_STONE_HIT, Nothing);
 
@@ -130,6 +132,19 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
         Item.Settings GlowBlockItemSettings = new Item.Settings();
         GlowBlockItemSettings.group(UnnaturalBlocksGroup);
         Registry.register(Registry.ITEM, "unnaturalblocks:glowblock", new BlockItem(GlowBlock, GlowBlockItemSettings));
+
+        FabricBlockSettings Blindnesspadsetting = FabricBlockSettings.of(Material.STONE);
+        Blindnesspadsetting.strength(1.3f);
+        Blindnesspadsetting.breakByTool(FabricToolTags.PICKAXES, 1);
+        Blindnesspadsetting.requiresTool();
+        Blindnesspadsetting.sounds(new BlockSoundGroup(1.0f, 1.0f, SoundEvents.BLOCK_SOUL_SAND_BREAK, Nothing, SoundEvents.BLOCK_SOUL_SAND_PLACE, SoundEvents.BLOCK_SOUL_SAND_HIT, Nothing));
+        Blindnesspad = new BlindnessPad(Blindnesspadsetting);
+        Registry.register(Registry.BLOCK, "unnaturalblocks:blindnesspad", Blindnesspad);
+
+        Item.Settings Blindnesspaditemsettings = new Item.Settings();
+        Blindnesspaditemsettings.group(UnnaturalBlocksGroup);
+        Registry.register(Registry.ITEM, "unnaturalblocks:blindnesspad", new BlockItem(Blindnesspad, Blindnesspaditemsettings));
+
 
         // Registering our class so that it runs on the tick event
         ServerTickEvents.END_SERVER_TICK.register(this);

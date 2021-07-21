@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "unnaturalblocks:block/blindnesspad",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "unnaturalblocks:block/blindnesspad",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "unnaturalblocks:block/blindnesspad"
+    },
+    "facing=south": {
+      "model": "unnaturalblocks:block/blindnesspad",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "unnaturalblocks:block/blindnesspad",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "unnaturalblocks:block/blindnesspad",
+      "y": 270
+    }
+  }
+}
