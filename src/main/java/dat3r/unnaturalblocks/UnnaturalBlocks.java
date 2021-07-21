@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EquipmentSlot;
@@ -30,6 +31,7 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
     static Block SpeedPad;
     static Block SmallJumpPad;
     static Block ElytraPad;
+    static Block UltraElytraPad;
     static Block JumpPad;
     static SoundEvent Nothing = new SoundEvent(new Identifier("unnaturalblocks:nothing"));
     static BlockSoundGroup PadSound = new BlockSoundGroup(1.0f, 1.0f, SoundEvents.BLOCK_STONE_BREAK, Nothing, SoundEvents.BLOCK_STONE_PLACE, SoundEvents.BLOCK_STONE_HIT, Nothing);
@@ -108,6 +110,12 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
         Item.Settings ElytraPadItemSettings = new Item.Settings();
         ElytraPadItemSettings.group(UnnaturalBlocksGroup);
         Registry.register(Registry.ITEM, "unnaturalblocks:elytrapad", new BlockItem(ElytraPad, ElytraPadItemSettings));
+
+        // New Block with same settings
+        UltraElytraPad = new ElytraPad(ElytrapadSettings);
+        Registry.register(Registry.BLOCK, "unnaturalblocks:ultraelytrapad", UltraElytraPad);
+        Registry.register(Registry.ITEM, "unnaturalblocks:ultraelytrapad", new BlockItem(UltraElytraPad, ElytraPadItemSettings));
+
         //New Block
 
         FabricBlockSettings GlowBlockSettings = FabricBlockSettings.of(Material.STONE);
@@ -115,6 +123,7 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
         GlowBlockSettings.breakByTool(FabricToolTags.PICKAXES, 1);
         GlowBlockSettings.requiresTool();
         GlowBlockSettings.sounds(PadSound);
+        GlowBlockSettings.luminance((state) -> 15);
         GlowBlock = new GlowBlock(GlowBlockSettings);
         Registry.register(Registry.BLOCK, "unnaturalblocks:glowblock", GlowBlock);
 
@@ -137,8 +146,10 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
                 World playerworld = Player.world; // get the world the player is in
                 BlockPos playerpos = Player.getBlockPos().up(2); // the block pos 2 spaces above where the players feet are
 
-                for (int i = 0; i < 6; i++) { // we're running this 6 times
-                    if (playerworld.getBlockState(playerpos).isOf(ElytraPad)) { // if the block at the current position we are checking is elytra pad
+                for (int i = 0; i < 10; i++) { // we're running this 10 times
+                    BlockState state = playerworld.getBlockState(playerpos);
+
+                    if (state.isOf(ElytraPad)) { // if the block at the current position we are checking is elytra pad
                         ItemStack Elytra = new ItemStack(Items.ELYTRA); // create a stack of 1 elytra
                         Elytra.addEnchantment(Enchantments.BINDING_CURSE, 1); // give it curse of binding
                         Elytra.addEnchantment(Enchantments.UNBREAKING, 1000);
@@ -147,9 +158,29 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
 
                         Player.equipStack(EquipmentSlot.CHEST, Elytra); // equip the elytra on the chest
                         break; // if we've already found it we break from the loop
+                    } else if (!state.isAir()) {
+                        break; // if it's not air it breaks the loop - there is a block in the way
                     }
 
                     playerpos = playerpos.up(1); // move the block position one up, so that we are checking the next block above
+                }
+
+                for (int i = 0; i < 12; i++) {
+                    BlockState state = playerworld.getBlockState(playerpos);
+
+                    if (state.isOf(UltraElytraPad)) {
+                        ItemStack Elytra = new ItemStack(Items.ELYTRA);
+                        Elytra.addEnchantment(Enchantments.BINDING_CURSE, 1);
+                        Elytra.addEnchantment(Enchantments.UNBREAKING, 1000);
+                        Elytra.getOrCreateNbt().putBoolean("TemporaryElytra", true);
+                        Elytra.addHideFlag(ItemStack.TooltipSection.ENCHANTMENTS);
+
+                        Player.equipStack(EquipmentSlot.CHEST, Elytra);
+                        break;
+                    }
+                    // this time we do not check for air. The ultra elytra pad works through blocks!
+
+                    playerpos = playerpos.up(1);
                 }
             }
         }

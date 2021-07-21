@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#N#",
+    "GEG"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:purple_concrete"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "E": {
+      "item": "unnaturalblocks:elytrapad"
+    }
+  },
+  "result": {
+    "item": "unnaturalblocks:ultraelytrapad",
+    "count": 1
+  }
+}
