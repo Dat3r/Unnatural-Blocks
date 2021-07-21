@@ -3,6 +3,8 @@
   "block.unnaturalblocks.smalljumppad": "Small Jump Pad",
   "block.unnaturalblocks.jumppad": "Jump Pad",
   "block.unnaturalblocks.launchpad": "Launch Pad",
+  "block.unnaturalblocks.elytrapad": "Elytra Pad",
+  "block.unnaturalblocks.glowblock": "Glow Pad",
   "itemGroup.unnaturalblocks.group": "Unnatural Blocks",
   "subtitle.steponpad": "Step on Pad"
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "unnaturalblocks:block/bottom_other",
+  "textures": {
+    "other": "unnaturalblocks:block/elytrapad",
+    "bottom": "unnaturalblocks:block/elytrapad_bottom"
+  }
+}

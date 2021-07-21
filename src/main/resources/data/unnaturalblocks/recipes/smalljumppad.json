@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " S ",
+    "R R"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:pink_concrete"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "R": {
+      "item": "minecraft:rabbit_foot"
+    }
+  },
+  "result": {
+    "item": "unnaturalblocks:smalljumppad",
+    "count": 8
+  }
+}

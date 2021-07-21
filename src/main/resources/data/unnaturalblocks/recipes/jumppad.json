@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "DSD",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:orange_concrete"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "R": {
+      "item": "minecraft:rabbit_foot"
+    }
+  },
+  "result": {
+    "item": "unnaturalblocks:jumppad",
+    "count": 8
+  }
+}

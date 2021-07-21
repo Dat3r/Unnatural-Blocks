@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#T#",
+    "TOT",
+    "#T#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:blue_dye"
+    },
+    "T": {
+      "item": "minecraft:tnt"
+    },
+    "O": {
+      "item": "minecraft:target"
+    }
+  },
+  "result": {
+    "item": "unnaturalblocks:launchpad",
+    "count": 8
+  }
+}

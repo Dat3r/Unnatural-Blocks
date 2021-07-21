@@ -34,7 +34,7 @@ public class SpeedPad extends FacingBlock {
                     world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_NOTE_BLOCK_PLING, SoundCategory.BLOCKS, 1.0f, 1.0f); // play a sound. pling!
                 }
 
-                StatusEffectInstance SpeedpadStatusEffectInstance = new StatusEffectInstance(StatusEffects.SPEED, 50 , 2, true, false); // create a status effect instance of speed
+                StatusEffectInstance SpeedpadStatusEffectInstance = new StatusEffectInstance(StatusEffects.SPEED, 50, 2, true, false); // create a status effect instance of speed
                 le.addStatusEffect(SpeedpadStatusEffectInstance); // add the status effect to the entity
             }
         }

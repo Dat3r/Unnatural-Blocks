@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#D#",
+    "WWW",
+    "RWR"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:yellow_concrete"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "W": {
+      "item": "minecraft:white_concrete"
+    },
+    "R": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result": {
+    "item": "unnaturalblocks:speedpad",
+    "count": 8
+  }
+}

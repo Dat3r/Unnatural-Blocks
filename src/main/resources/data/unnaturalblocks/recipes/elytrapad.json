@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#D#",
+    "#E#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:emerald"
+    },
+    "D": {
+      "item": "minecraft:diamond_block"
+    },
+    "E": {
+      "item": "minecraft:elytra"
+    }
+  },
+  "result": {
+    "item": "unnaturalblocks:elytrapad",
+    "count": 1
+  }
+}
