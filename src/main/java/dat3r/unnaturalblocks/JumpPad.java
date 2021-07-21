@@ -15,11 +15,16 @@ import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class SmallJumpPad extends FacingBlock {
+public class JumpPad extends FacingBlock {
 
-    public SmallJumpPad(FabricBlockSettings SmallJumpPadSettings) {
-        super(SmallJumpPadSettings);
+    public JumpPad(FabricBlockSettings settings, int jumpBoost, int speedBoost) {
+        super(settings);
+        this.speedBoost = speedBoost;
+        this.jumpBoost = jumpBoost;
     }
+
+    int jumpBoost;
+    int speedBoost;
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -34,10 +39,10 @@ public class SmallJumpPad extends FacingBlock {
                 if (!le.hasStatusEffect(StatusEffects.JUMP_BOOST)) {
                     world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 }
-                StatusEffectInstance SmallJumpPadStatusEffectInstance = new StatusEffectInstance(StatusEffects.JUMP_BOOST, 40, 7, true, false);
-                StatusEffectInstance SmallJumpPadStatusEffectInstanced = new StatusEffectInstance(StatusEffects.SPEED, 40, 1, true, false);
-                le.addStatusEffect(SmallJumpPadStatusEffectInstance);
-                le.addStatusEffect(SmallJumpPadStatusEffectInstanced);
+                StatusEffectInstance JumpPadStatusEffectInstance = new StatusEffectInstance(StatusEffects.JUMP_BOOST, 10, this.jumpBoost, true, false);
+                StatusEffectInstance JumpPadStatusEffectInstance2 = new StatusEffectInstance(StatusEffects.SPEED, 20, this.speedBoost, true, false);
+                le.addStatusEffect(JumpPadStatusEffectInstance);
+                le.addStatusEffect(JumpPadStatusEffectInstance2);
             }
         }
     }

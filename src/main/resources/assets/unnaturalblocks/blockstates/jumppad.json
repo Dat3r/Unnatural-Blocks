@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "unnaturalblocks:block/jumppad",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "unnaturalblocks:block/jumppad",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "unnaturalblocks:block/jumppad"
+    },
+    "facing=south": {
+      "model": "unnaturalblocks:block/jumppad",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "unnaturalblocks:block/jumppad"
+    },
+    "facing=west": {
+      "model": "unnaturalblocks:block/jumppad",
+      "y": 270
+    }
+  }
+}

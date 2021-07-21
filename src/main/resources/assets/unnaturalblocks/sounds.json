@@ -1,6 +1,8 @@
 {
   "nothing": {
-    "subtitle": "Step on Speedpad",
-    "sounds": "unnaturalblocks:nothing"
+    "subtitle": "subtitle.steponpad",
+    "sounds": [
+      "unnaturalblocks:nothing"
+    ]
   }
 }

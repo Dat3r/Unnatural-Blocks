@@ -1,4 +1,8 @@
 {
   "block.unnaturalblocks.speedpad": "Speed Pad",
-  "block.unnaturalblocks.smalljumppad": "Small Jump Pad"
+  "block.unnaturalblocks.smalljumppad": "Small Jump Pad",
+  "block.unnaturalblocks.jumppad": "Jump Pad",
+  "block.unnaturalblocks.launchpad": "Launch Pad",
+  "itemGroup.unnaturalblocks.group": "Unnatural Blocks",
+  "subtitle.steponpad": "Step on Pad"
 }
