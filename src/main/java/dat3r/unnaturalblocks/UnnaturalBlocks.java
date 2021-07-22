@@ -34,6 +34,7 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
     public static Block ElytraPad;
     public static Block UltraElytraPad;
     public static Block Blindnesspad;
+    public static Block PushPad;
     public static Block JumpPad;
     static SoundEvent Nothing = new SoundEvent(new Identifier("unnaturalblocks:nothing"));
     static BlockSoundGroup PadSound = new BlockSoundGroup(1.0f, 1.0f, SoundEvents.BLOCK_STONE_BREAK, Nothing, SoundEvents.BLOCK_STONE_PLACE, SoundEvents.BLOCK_STONE_HIT, Nothing);
@@ -80,7 +81,7 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
         JumpPadSettings.breakByTool(FabricToolTags.PICKAXES, 1);
         JumpPadSettings.requiresTool();
         JumpPadSettings.sounds(PadSound);
-        JumpPad = new JumpPad(JumpPadSettings, 16, 3);
+        JumpPad = new JumpPad(JumpPadSettings, 20, 4);
         Registry.register(Registry.BLOCK, "unnaturalblocks:jumppad", JumpPad);
 
         Item.Settings JumpPadItemSettings = new Item.Settings();
@@ -144,6 +145,18 @@ public class UnnaturalBlocks implements ModInitializer, ServerTickEvents.EndTick
         Item.Settings Blindnesspaditemsettings = new Item.Settings();
         Blindnesspaditemsettings.group(UnnaturalBlocksGroup);
         Registry.register(Registry.ITEM, "unnaturalblocks:blindnesspad", new BlockItem(Blindnesspad, Blindnesspaditemsettings));
+
+        FabricBlockSettings PushPadSettings = FabricBlockSettings.of(Material.STONE);
+        PushPadSettings.strength(1.1f);
+        PushPadSettings.breakByTool(FabricToolTags.PICKAXES, 2);
+        PushPadSettings.requiresTool();
+        PushPadSettings.sounds(new BlockSoundGroup(1.0f, 1.0f, SoundEvents.BLOCK_WOOL_BREAK, Nothing, SoundEvents.BLOCK_WOOL_PLACE, SoundEvents.BLOCK_WOOL_HIT, Nothing));
+        PushPadSettings.dropsNothing();
+        PushPad = new PushPad(PushPadSettings);
+        Registry.register(Registry.BLOCK, "unnaturalblocks:pushpad", PushPad);
+
+        Item.Settings PushPadItemSettings = new Item.Settings();
+        Registry.register(Registry.ITEM, "unnaturalblocks:pushpad", new BlockItem(PushPad, PushPadItemSettings));
 
 
         // Registering our class so that it runs on the tick event

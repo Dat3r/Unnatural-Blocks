@@ -9,8 +9,8 @@
     "Dat3r!"
   ],
 
-  "license": "All Rights Reserved",
-  "icon": "assets/modid/icon.png",
+  "license": "MIT",
+  "icon": "assets/unnaturalblocks/icon.png",
 
   "environment": "*",
   "entrypoints": {
